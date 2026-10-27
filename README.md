@@ -1,41 +1,31 @@
 # Where Unaccompanied Children Are Placed: Week 1
 
-Week 1 (scope and data assembly) of a project on where unaccompanied children were released to sponsors
+Week 1 (scope and data assembly) of a project where unaccompanied children were released to sponsors
 across U.S. states and counties, FY2015–FY2025, and what a future rise in national volume would mean for
 local services (schools, legal aid, case management). Service planning only.
 
-This repository holds the Week 1 work on its own. The full project, with the later weeks, is
+This repository holds the Week 1 work on its own. The full project, with later weeks, is
 **[UC-Placement](https://github.com/patrickdoyle314/UC-Placement)**.
 
-- Problem statement (draft for approval): [`docs/problem_statement.md`](docs/problem_statement.md)
+- Problem statement: [`docs/problem_statement.md`](docs/problem_statement.md)
 - Plan of record: `docs/portfolio_plan_2026-10-20.docx` (kept local, not published)
 - Changes: [`CHANGELOG.md`](CHANGELOG.md)
 
-**Status:** Week 1 done, pending FSO and contract-lead approval of the problem statement.
-This repository is **public** since October 27, 2026, released by the project owner.
 
 ## Week 1 checklist
 
 | Week 1 task | Status | Where |
 |---|---|---|
-| One-page problem statement, after FSO and contract-lead approval | Draft written; approval pending | [`docs/problem_statement.md`](docs/problem_statement.md) |
+| One-page problem statement, after FSO and contract-lead approval | [`docs/problem_statement.md`](docs/problem_statement.md) |
 | Reshape the MPI file to one row per fiscal year and place, keyed by county FIPS code | Done: 389 of 393 counties keyed by FIPS (4 Connecticut counties unmatched) | [`src/build_dataset.py`](src/build_dataset.py) → `releases_by_fy_geo.csv` |
 | Add an "other counties" row per state (state total minus listed counties); join Census county data | Done: Vintage 2024 total and school-age population. ACS language data pending | same |
 | State and county totals reconcile to the MPI file for every year | Done: 648 of 648 checks pass | `reconciliation.csv` |
-
-## Built alongside another project
-
-This project is being built alongside **[MP](https://github.com/patrickdoyle314/MP)**, a separate
-project on open missing-person cases for children and young adults. The two stay separate: each has
-its own data, code, README and changelog. They communicate only through aggregate tables under the
-shared contract in [`exchange/EXCHANGE.md`](exchange/EXCHANGE.md); no individual records pass between
-them, and MP's adult figures never enter this project's comparisons.
 
 ## Guardrails
 
 These apply to every file, chart and write-up in this project:
 
-1. **Public, aggregate data only.** No program data, internal knowledge, screenshots, or anything learned on the job.
+1. **Public, aggregate data only.**
 2. **Service planning only.** Never framed as, or usable as, a tool for locating children, sponsors or households.
 3. **Respect ORR's threshold.** Counties with fewer than 50 releases are not published, and their counts are never backed out.
 4. **Neutral language.** "Unaccompanied children", "released to sponsors"; describe patterns, not blame.
@@ -105,11 +95,3 @@ Findings for the plan:
   have no population in this file.
 - The plan says to join ACS county data. Total and school-age population come from the Vintage 2024
   estimates above, which need no API key; the ACS join (language spoken at home) is pending (see Data).
-
-## Exchange with adjacent projects
-
-This project and the MP project (missing children and young adults, `../MP`) are **separate
-projects that share aggregates only**, through the contract in
-[`exchange/EXCHANGE.md`](exchange/EXCHANGE.md) (v1.0). Each writes `exchange/outbox/` and reads the
-other's; no raw records cross. From MP, only **child** measures are used. Adult measures
-(ages 18–25) are kept apart and never enter child comparisons.
