@@ -1,0 +1,2 @@
+# Week 1: reading the MPI spreadsheet (everything else is Python's standard library)
+openpyxl>=3.1
