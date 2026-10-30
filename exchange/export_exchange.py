@@ -14,10 +14,11 @@ Usage: python exchange/export_exchange.py   (run src/build_dataset.py first)
 # Python ideas: csv.writer, a set to avoid writing the same row twice, json.dumps for the manifest,
 # datetime for a timestamp.
 # ===================================================================================================
-import csv
+
+from pathlib import Path
 import datetime as dt
 import json
-from pathlib import Path
+import csv
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTBOX = ROOT / "exchange/outbox"
